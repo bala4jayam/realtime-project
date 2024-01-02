@@ -44,7 +44,7 @@ metadata:
   name: realtime-project-ingress
   namespace: realtime-project
   annotations:
-    kubernetes.io/ingress.class: "realtime-project"
+    kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
   - host: app.zooshopper.online
