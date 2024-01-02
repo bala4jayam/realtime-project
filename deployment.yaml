@@ -6,7 +6,7 @@ kind: Deployment
 metadata:
   name: realtime-project-deployment
 spec:
-  replicas: 1
+  replicas: 7
   selector:
     matchLabels:
       app: realtime-project
