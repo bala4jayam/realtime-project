@@ -1,0 +1,60 @@
+---
+# realtime-project-deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: realtime-project-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: realtime-project
+  template:
+    metadata:
+      labels:
+        app: realtime-project
+    spec:
+      containers:
+      - name: realtime-project
+        image: 142928493353.dkr.ecr.ap-south-1.amazonaws.com/realtime-project:1
+        ports:
+        - containerPort: 80
+
+---
+# realtime-project-service.yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: realtime-project-service
+spec:
+  selector:
+    app: realtime-project
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
+  
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: realtime-project-ingress
+  namespace: realtime-project
+  annotations:
+    kubernetes.io/ingress.class: "realtime-project"
+spec:
+  rules:
+  - host: app.zooshopper.online
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: realtime-project-service
+            port:
+              number: 80
+
