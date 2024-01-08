@@ -1,36 +1,36 @@
 ---
-# realtime-project:8
+# realtime-project:9
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: realtime-projects-deployment
+  name: realtime-project:9
 spec:
   replicas: 7
   selector:
     matchLabels:
-      app: realtime-projects
+      app: realtime-project:9
   template:
     metadata:
       labels:
-        app: realtime-projects
+        app: realtime-project:9
     spec:
       containers:
-      - name: realtime-projects-image
-        image: 142928493353.dkr.ecr.ap-south-1.amazonaws.com/realtime-project:8
+      - name: realtime-project:9
+        image: 142928493353.dkr.ecr.ap-south-1.amazonaws.com/realtime-project:9
         ports:
         - containerPort: 80
 
 ---
-# realtime-project:8
+# realtime-project:9
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: realtime-projects-svc
+  name: realtime-project:9
 spec:
   selector:
-    app: realtime-projects
+    app: realtime-project:9
   ports:
     - protocol: TCP
       port: 80
@@ -41,7 +41,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: realtime-project-ing
+  name: realtime-project:9
   annotations:
     kubernetes.io/ingress.class: "nginx"
 spec:
@@ -53,7 +53,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: realtime-project-svc
+            name: realtime-project:9
             port:
               number: 80
 
