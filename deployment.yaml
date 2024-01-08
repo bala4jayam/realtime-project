@@ -42,7 +42,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: realtime-project:8
-  namespace: realtime-project:8
   annotations:
     kubernetes.io/ingress.class: "nginx"
 spec:
