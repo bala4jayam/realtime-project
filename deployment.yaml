@@ -16,7 +16,7 @@ spec:
         app: realtime-projects
     spec:
       containers:
-      - name: realtime-project
+      - name: realtime-projects-image
         image: 142928493353.dkr.ecr.ap-south-1.amazonaws.com/realtime-project:8
         ports:
         - containerPort: 80
