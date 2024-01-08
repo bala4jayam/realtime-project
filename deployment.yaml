@@ -9,7 +9,7 @@ spec:
   replicas: 7
   selector:
     matchLabels:
-      app: rrealtime-projects
+      app: realtime-projects
   template:
     metadata:
       labels:
